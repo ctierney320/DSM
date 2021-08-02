@@ -1,0 +1,10 @@
+#Charlotte's GitIgnore
+
+# Ignore all text files
+*.txt
+
+# Ignore all image files
+*.jpg
+*.png
+
+
