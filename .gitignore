@@ -1,10 +1,18 @@
 #Charlotte's GitIgnore
 
+# FILES TO INCLUDE:
+!/tiling.R
+
+
 # Ignore all text files
 *.txt
 
 # Ignore all image files
 *.jpg
 *.png
+
+
+# Ignore personal files
+*.R
 
 
