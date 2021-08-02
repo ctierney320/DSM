@@ -3,19 +3,18 @@
 
 
 ###### Pseudo code
+#for first raster:
+  #read in
+  #make df with data, ID#, x, and y
+  #tile into N tiles based on number of obs
 
-#for first raster
-#read in
-#make df with data, ID#, x, and y
-#tile into N tiles based on number of obs
+#for each folowing raster in list:
+  #read in
+  #for each existing tile
+  #read in the tile
+  #subset covariate df to match tile
+  #match new covariate and tile, save
 
-#for each folowing raster in list
-#read in
-#for each existing tile
-#read in the tile
-#subset covariate df to match tile
-#match new covariate and tile, save
-#etc. 
 
 
 
@@ -71,7 +70,6 @@ end.time <- Sys.time()
 FirstXYZ.time <- end.time - start.time
 FirstXYZ.time
 
-
 #### Tiling the First Raster
 # ## Create new folder for tiles using tilefold name created above
 # dir.create(path=paste(localfolder,tilefold,sep=""))                             #ONLY NEEDED ONCE
@@ -103,7 +101,7 @@ tiles <- list.files(path = tilefolder,
 
 
 #### Adding the rest of the covariates to existing tiles:
-#if you haven't already:
+## if you haven't already:
 tilefolder <- paste(localfolder,tilefold,"/",sep="")
 tiles <- list.files(path = tilefolder,
                     pattern=".rds$", full.names = T, recursive = F)
