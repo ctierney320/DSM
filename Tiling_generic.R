@@ -145,7 +145,7 @@ snowfall::sfInit(parallel=TRUE, cpus=cpus)
 snowfall::sfExport("tile.fn","tiles","len","ntiles",
                    "cov.names","cov.grids","tilefolder") 
 snowfall::sfLibrary(raster)
-tiling_check <- snowfall::sfLapply(2:3, function(x){tile.fn(x)})#;beep(sound=1)
+tiling_check <- snowfall::sfLapply(2:len, function(x){tile.fn(x)})              #LIMIT WHEN TESTING #should be 2:len
 snowfall::sfStop()
 
 end.time <- Sys.time()
