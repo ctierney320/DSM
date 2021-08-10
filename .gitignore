@@ -1,7 +1,7 @@
 #Charlotte's GitIgnore
 
 # FILES TO INCLUDE:
-!/tiling.R
+!/Tiling_generic.R
 
 
 # Ignore all text files

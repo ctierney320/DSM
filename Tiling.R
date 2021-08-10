@@ -8,7 +8,7 @@
   #make df with data, ID#, x, and y
   #tile into N tiles based on number of obs
 
-#for each folowing raster in list:
+#for each following raster in list:
   #read in
   #for each existing tile
   #read in the tile
@@ -37,7 +37,7 @@ rasterOptions(maxmemory = 1e+09, chunksize = 1e+08)
 localfolder <- "D:/CPT_work/TilingTests/" #make sure it includes the last "/"
 
 ## Name of tiling folder:
-tilefold <- "CovTiles"
+tilefold <- "Hen30Tiles"
 
 ## Location of rasters:
 # covfolder <- "G:/DSM_TWN/covar_sets/SWextent/" #full SW extent
@@ -117,7 +117,7 @@ tile.fn <- function(x){
   xyz.temp$ID <- 1:nrow(xyz.temp)
   xyz.temp$x <- as.integer(xyz.temp$x)
   xyz.temp$y <- as.integer(xyz.temp$y);
-  for (t in 7:9){                                                          #should be (t in 1:ntiles)
+  for (t in 13:16){                     #should be (t in 1:ntiles)              #LIMIT WHEN TESTING
     tile <- readRDS(paste(tilefolder,"cov_tile",t,".rds",sep="")) #read in one tile at a time
     tile <- tile[order(tile$ID),]
     tile.min <- as.numeric(tile$ID[1])
@@ -132,7 +132,7 @@ tile.fn <- function(x){
   return(cov.names[x])
 }
 
-#tile.fn(1) #for testing
+# tile.fn(3) #for testing where () is covariate
 
 start.time <- Sys.time()
 cpus <- parallel::detectCores() - 2
@@ -140,7 +140,7 @@ snowfall::sfInit(parallel=TRUE, cpus=cpus)
 snowfall::sfExport("tile.fn","tiles","len","ntiles",
                    "cov.names","cov.grids","tilefolder") 
 snowfall::sfLibrary(raster)
-tiling_check <- snowfall::sfLapply(2:len, function(x){tile.fn(x)})#;beep(sound=1)
+tiling_check <- snowfall::sfLapply(2:3, function(x){tile.fn(x)})#;beep(sound=1)
 snowfall::sfStop()
 #pred_data <- plyr::rbind.fill(tiling_check) #pulls out chunks of data and into DF
 
@@ -150,10 +150,11 @@ AllTiles.time
 
 
 ## Read in a file to check
-tile_check <- readRDS(paste(tilefolder,"cov_tile9.rds",sep=""))
+tile_check <- readRDS(paste(tilefolder,"cov_tile13.rds",sep=""))
 summary(tile_check)
 
 
 
 
-# Done
+# Done here for now
+
